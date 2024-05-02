@@ -6,6 +6,10 @@ seconds = 10
 sampleRate = 44100
 frequency = 440
 
+def generateWAV(filename, normalizedArray):
+    wavfile.write(filename + ".wav", sampleRate, normalizedArray)
+
+
 sineWave = np.empty(44100*seconds)
 
 for i in range(len(sineWave)):
@@ -18,7 +22,7 @@ fullRandom = np.empty(44100*seconds, dtype=np.int16)
 
 for i in range(len(fullRandom)):
     fullRandom[i] = random.randint(-32768, 32768)
-    print(fullRandom[i])
 
-wavfile.write("sine_wave.wav", sampleRate, sine_wave_normalized)
-wavfile.write("random_wave.wav", sampleRate, fullRandom)
+
+generateWAV("440hz", sine_wave_normalized)
+generateWAV("random", fullRandom)
