@@ -1,6 +1,7 @@
 import numpy as np
 from scipy.io import wavfile
 import random
+import time
 
 seconds = 10
 sampleRate = 44100
@@ -24,5 +25,14 @@ for i in range(len(fullRandom)):
     fullRandom[i] = random.randint(-32768, 32768)
 
 
+linear = np.empty(44100*seconds, dtype=np.int16)
+
+for i in range(-32768, 32768):
+    linear[i] = i
+    print(linear[i])
+    time.sleep(.00001)
+    
+
 generateWAV("440hz", sine_wave_normalized)
 generateWAV("random", fullRandom)
+generateWAV("linear", linear)
