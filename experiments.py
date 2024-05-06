@@ -27,11 +27,16 @@ linear = emptyArray
 for i in range(-32768, 32768):
     linear[i] = i
 
+nice = emptyArray
+for i in range(len(nice) - 1):
+    if i % 2 == 0:
+        nice[i] = 15000
+    else:
+        nice[i] = -15000
 
-sixteenBitsPrimes = find_primes(0,32768)
+generateWAV("generated/nice", nice)
 
-
-generateWAV("generated/440hz", sine_wave_normalized)
-generateWAV("generated/random", fullRandom)
-generateWAV("generated/linear", linear)
-generateWAV("generated/primes", sixteenBitsPrimes)
+# generateWAV("generated/4g40hz", sine_wave_normalized)
+# generateWAV("generated/random", fullRandom)
+# generateWAV("generated/linear", linear)
+# generateWAV("generated/primes", sixteenBitsPrimes)
